@@ -2,6 +2,7 @@
 const getHoraMiddleware = (req, res, next) => {
     const date = new Date();
     req.currentHour = date.getHours();  // Usamos solo las horas (de 0 a 23)
+    req.currentMinutes = date.getMinutes(); // Guarda solo los minutos en currentMinutes
     next();
 };
 

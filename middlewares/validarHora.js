@@ -1,4 +1,23 @@
 // middlewares/validarHora.js.
+// middlewares/validarHora.js
+const validarHora = (req, res, next) => {
+    const currentHour = req.currentHour; //recoge las horas.
+    const currentMinutes = req.currentMinutes; //recoge los minutos.
+
+    if (currentHour > 12 || (currentHour === 12 && currentMinutes >= 0)) { // Verifica si es mas de las 12:00
+        next(); //Permite el acceso a la sigente middleware.
+    } else {
+        const mensaje = "⚠️  Error 404 ⚠️. Aún NO es la HORA, espera hasta la 12:00 para poder Entrar.";
+        res.locals.mensaje = mensaje;
+        return res.redirect('/?mensaje=' + encodeURIComponent(mensaje)); // Redirige a la página de inicio
+    }
+};
+
+module.exports = validarHora;
+
+
+
+/*
 const validarHora = (req, res, next) => {
     if (req.currentHour >= 12 && req.currentHour <= 24) {
         return next(); // Continuar al siguiente middleware/ruta si la condición es verdadera.
@@ -10,7 +29,7 @@ const validarHora = (req, res, next) => {
 };
 
 module.exports = validarHora;
-
+*/
 
 // const validarHora = (req, res, next) => {
 //     console.log("Hora actual en validarHora:", req.currentHour);

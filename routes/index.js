@@ -8,10 +8,11 @@ router.use(horaMiddleware);
 
 router.get('/', (req, res) => {
     const mensajeWellcome = req.query.mensajeWellcome || "¡Bienvenido!";
+    const formattedHours = `${req.currentHour}:${req.currentMinutes.toString().padStart(2, '0')}`; //formatea minutos con los dos digitos.
     res.send(`
         <body>
             <h1>${mensajeWellcome}</h1>
-            <h3>Hora Actual: ${req.currentHour}</h3>
+            <h3>Hora Actual: ${formattedHours}</h3>
             <br><p>Para continuar dar click al botón.</p></br>
             <a href="/endroute">
                 <button>Ruta Final</button>
