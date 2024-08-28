@@ -5,8 +5,19 @@ const getHoraMiddleware = (req, res, next) => {
     next();
 };
 
-
 module.exports = getHoraMiddleware;
+
+// // middlewares/horaMiddleware.js
+// const horaMiddleware = (req, res, next) => {
+//     const date = new Date(); 
+//     const hours = String(date.getHours()).padStart(2, '0'); // Asegura que las horas tengan dos dígitos
+//     const minutes = String(date.getMinutes()).padStart(2, '0'); // Asegura que los minutos tengan dos dígitos
+//     req.currentHour = `${hours}:${minutes}`; // Formato de hora y minutos juntos (HH:MM)
+//     next(); 
+// };
+
+// module.exports = horaMiddleware;
+
 
 //Middleware con la hora actual agregada al    objeto req.
 // const getHoraMiddleware = (req, res, next) => {
